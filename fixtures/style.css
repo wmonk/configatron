@@ -1,0 +1,8 @@
+.container {
+    background: red;
+    box-shadow: 0 0 0 rgba(0,0,0,0.5);
+
+    li {
+        float: right;
+    }
+}
