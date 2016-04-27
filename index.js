@@ -15,6 +15,13 @@ var cssLoader = {
     test: /\.css$/,
     loaders: ['style', 'css', 'postcss']
 };
+var jsLoader = {
+    test: /\.js$/,
+    loader: 'babel',
+    query: {
+        presets: ['es2015', 'react']
+    }
+};
 
 function configatron (conf) {
     var config = conf || {};
@@ -24,7 +31,7 @@ function configatron (conf) {
 
     return Object.assign({}, conf, {
         module: {
-            loaders: [cssLoader]
+            loaders: [cssLoader, jsLoader]
         },
         postcss: function () { return [autoprefixer, nested] }
     });
