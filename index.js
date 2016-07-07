@@ -20,15 +20,13 @@ var jsLoader = {
     loader: 'babel',
     query: {
         presets: ['es2015', 'react'],
-        env: {
-            development: {
-                plugins: [['react-transform', {
-                    transforms: ['', {}]
-                }]]
-            }
-        }
+        plugins: ['transform-object-rest-spread']
     }
 };
+var jsonLoader = {
+    test: /\.json$/,
+    loader: 'json'
+}
 
 function configatron (conf) {
     var config = conf || {};
@@ -38,7 +36,7 @@ function configatron (conf) {
 
     return Object.assign({}, conf, {
         module: {
-            loaders: [cssLoader, jsLoader]
+            loaders: [cssLoader, jsLoader, jsonLoader]
         },
         postcss: function () { return [autoprefixer, nested] }
     });
